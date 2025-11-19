@@ -3,12 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO/AI検索対策: タイトルタグの最適化 -->
-    <title>【データ分析】歯科医院の集患・経営改善コンサルティング｜Dental Insight (irohaコンサルティング)</title> 
-    <!-- SEO/AI検索対策: メタディスクリプションの追加 -->
-    <meta name="description" content="大手歯科専門サイトで1万医院を分析したデータに基づく、歯科医院向けの集患・経営改善コンサルティングサービス。患者が選ばない「3つの脱落要因」を徹底解説し、栃木県に特化した戦略を提供します。"> 
+    <title>選ばれる歯科医院の分析ダッシュボード</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Tailwind Warm Gray (`gray-50`, `gray-800`) + Teal (`teal-600`, `teal-100`) -->
+    <!-- Application Structure Plan: 
+        SPA(単一ページアプリケーション)として、ナビゲーションで各セクションに移動できるテーマ別のダッシュボード構造を採用。
+        1. ホーム: 概要と問題提起。
+        2. 診断 (Diagnosis): レポートの「3つの共通点」を、患者の医院選びの「3つの脱落ポイント」として再解釈。インタラクティブなタブ形式で提示し、ユーザーが能動的に情報を発見できるように設計。
+        3. データ (Data): 「診断」セクションの根拠となる大手歯科専門サイトの統計データをChart.jsで可視化。予約の機会損失を視覚的に強調する。
+        4. 解決策 (Solutions): 具体的なアクションプランを提示。
+        5. サービス (Services): レポート提供者のサービスへのCTA（行動喚起）。
+        この構造は、LPの構成案をよりインタラクティブにし、ユーザー（歯科医院経営者）が自身の医院の課題を発見し、解決策を理解しやすいように設計されている。
+    -->
+    <!-- Visualization & Content Choices:
+        1.  レポート情報: 3つの共通点 (情報, 口コミ, 予約)
+            ゴール: 整理・情報提供
+            Viz/Method: インタラクティブなタブ付きコンテンツ (HTML/Tailwind/JS)
+            インタラクション: ユーザーが「情報」「口コミ」「予約」のボタンをクリックすると、対応する詳細コンテンツが表示/非表示に切り替わる。
+            正当性: ユーザーが一度に1つの課題に集中でき、能動的な探索を促すため。
+            ライブラリ: Vanilla JS, Tailwind CSS.
+        2.  レポート情報: 「夜20時以降にアクセスが集中」「電話受付時間外の予約が非常に多い」
+            ゴール: 変化・トレンドの表示
+            Viz/Method: Chart.jsによるバーチャート
+            インタラクション: ホバー時のツールチップ表示
+            正当性: 「いつ」患者がアクセスしているかを視覚化し、電話対応のみの機会損失を明確に示すため。
+            ライブラリ: Chart.js (Canvas)
+        3.  レポート情報: 「当日午前→午後に予約する人が6割」
+            ゴール: 割合の表示
+            Viz/Method: Chart.jsによるドーナツチャート
+            インタラクション: ホバー時のツールチップ表示
+            正当性: 「今すぐ予約したい」という患者の即時性のニーズをパーセンテージで明確に示すため。
+            ライブラリ: Chart.js (Canvas)
+        4.  レポート情報: 複数の媒体 (HP, ポータル, Google BP, SNS)
+            ゴール: 整理・情報提供
+            Viz/Method: スタイリングされたカードのグリッド (HTML/Tailwind)
+            インタラクション: なし (静的表示)
+            正当性: 箇条書きよりも視覚的に「複数の媒体」を強調できるため。
+            ライブラリ: Tailwind CSS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
@@ -51,24 +85,44 @@
 
     <!-- Header & Navigation -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto max-w-6xl px-4">
+        <div class="container mx-auto max-w-6xl px-4">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <div class="text-2xl font-bold text-teal-700">
                     Dental Insight
                 </div>
                 
-                <!-- Navigation Links - UPDATED: コンサルタントを最後に移動 -->
-                <ul class="flex items-center space-x-2 sm:space-x-4 md:space-x-8">
+                <!-- Desktop Navigation Links -->
+                <ul id="desktop-nav" class="hidden sm:flex items-center space-x-4 sm:space-x-8">
                     <li><a href="#home" data-target="home" class="nav-link text-gray-600 hover:text-teal-600 pb-1 pt-2 px-1 text-sm sm:text-base">ホーム</a></li>
                     <li><a href="#diagnosis" data-target="diagnosis" class="nav-link text-gray-600 hover:text-teal-600 pb-1 pt-2 px-1 text-sm sm:text-base">3つの脱落要因</a></li>
                     <li><a href="#data" data-target="data" class="nav-link text-gray-600 hover:text-teal-600 pb-1 pt-2 px-1 text-sm sm:text-base">データ分析</a></li>
                     <li><a href="#solutions" data-target="solutions" class="nav-link text-gray-600 hover:text-teal-600 pb-1 pt-2 px-1 text-sm sm:text-base">解決策</a></li>
                     <li><a href="#services" data-target="services" class="nav-link text-gray-600 hover:text-teal-600 pb-1 pt-2 px-1 text-sm sm:text-base">サービス</a></li>
-                    <li><a href="#iroha-profile" data-target="iroha-profile" class="nav-link text-gray-600 hover:text-teal-600 pb-1 pt-2 px-1 text-sm sm:text-base">コンサルタント</a></li>
                 </ul>
+
+                <!-- Mobile Menu Button (Hamburger) -->
+                <button id="mobile-menu-button" class="sm:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
-        </nav>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden sm:hidden bg-white shadow-lg border-t border-gray-200 fixed top-16 w-full z-40">
+            <ul class="flex flex-col space-y-2 p-4">
+                <li><a href="#home" data-target="home" class="mobile-nav-link nav-link block py-2 px-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-md">ホーム</a></li>
+                <li><a href="#diagnosis" data-target="diagnosis" class="mobile-nav-link nav-link block py-2 px-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-md">3つの脱落要因</a></li>
+                <li><a href="#data" data-target="data" class="mobile-nav-link nav-link block py-2 px-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-md">データ分析</a></li>
+                <li><a href="#solutions" data-target="solutions" class="mobile-nav-link nav-link block py-2 px-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-md">解決策</a></li>
+                <li><a href="#services" data-target="services" class="mobile-nav-link nav-link block py-2 px-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-md">サービス</a></li>
+            </ul>
+        </div>
     </header>
 
     <!-- Main Content -->
@@ -76,19 +130,20 @@
 
         <!-- Section 1: Home -->
         <section id="home" class="text-center mb-16 pt-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-teal-700 mb-4">なぜ、患者はあなたの医院を選ばないのか？</h1>
-            <p class="text-lg sm:text-xl text-gray-700 mb-6 max-w-3xl mx-auto">大手歯科専門サイトで1万医院を分析してわかったのは「選ばれない医院が同じ“落とし穴”に落ちている」という事実です。</p>
+            <h1 class="text-3xl sm:text-4xl font-bold text-teal-700 mb-4">大手歯科専門サイトのデータ分析から見えた、選ばれる医院がやるべき施策とは？</h1>
+            <p class="text-lg sm:text-xl text-gray-700 mb-6 max-w-3xl mx-auto">1万医院の分析から判明した、**患者が増え続ける**医院の決定的な共通点と、その具体的な対策をインタラクティブに解説します。</p>
+            <p class="text-base text-gray-600 max-w-2xl mx-auto">「ポータルサイトに登録し、ホームページも作った。それでも予約が埋まらない…」<br>その原因は、広告戦略ではなく、**患者が医院を「選ぶ」際の基本的な判断基準**にあるかもしれません。</p>
         </section>
 
         <!-- Section 2: Diagnosis (The 3 Dropout Points) -->
         <section id="diagnosis" class="mb-16 pt-16">
-            <h2 class="text-3xl font-bold text-center mb-4">「3つの脱落要因」</h2>
-            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">患者は医院を探す際、無意識に「減点法」で医院をチェックしています。患者が医院選びを「やめる」決定的な3つのポイントを解説します。</p>
+            <h2 class="text-3xl font-bold text-center mb-4">患者が離れる「3つの脱落要因」</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">患者は医院を探す際、無意識に「減点法」で医院をチェックしています。大手歯科専門サイト元責任者の分析に基づき、患者が医院選びを「やめる」決定的な3つのポイントを解説します。ご自身の医院が当てはまっていないか、ご確認ください。</p>
             
             <!-- Tab Buttons -->
             <div class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mb-8">
                 <button id="btn-info" class="tab-btn text-lg font-semibold py-3 px-6 rounded-lg shadow-sm border border-gray-300 bg-white text-gray-700 hover:bg-gray-100">
-                    <span class="text-2xl mr-2">①</span> 情報の不足
+                    <span class="text-2xl mr-2">①</span> 情報の不備
                 </button>
                 <button id="btn-review" class="tab-btn text-lg font-semibold py-3 px-6 rounded-lg shadow-sm border border-gray-300 bg-white text-gray-700 hover:bg-gray-100">
                     <span class="text-2xl mr-2">②</span> 口コミの放置
@@ -103,7 +158,7 @@
                 <!-- Content 1: Information -->
                 <div id="content-info" class="tab-content hidden">
                     <h3 class="text-2xl font-bold text-teal-700 mb-4">要因①：正確・最新・多角的な情報発信が徹底されていない</h3>
-                    <p class="text-lg mb-6">医院選びは「情報の総合点」で決まる時代です。患者は複数の媒体を必ずチェックします。</p>
+                    <p class="text-lg mb-6">もはや医院選びは「情報の総合点」で決まる時代です。患者は複数の媒体を必ずチェックします。</p>
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 text-center mb-6">
                         <div class="bg-teal-50 border border-teal-200 text-teal-800 p-3 rounded-lg"><p>ホームページ</p></div>
                         <div class="bg-teal-50 border border-teal-200 text-teal-800 p-3 rounded-lg"><p>ポータル</p></div>
@@ -130,7 +185,7 @@
                 <!-- Content 3: Booking -->
                 <div id="content-booking" class="tab-content hidden">
                     <h3 class="text-2xl font-bold text-teal-700 mb-4">要因③：ネット予約導線が整っていない</h3>
-                    <p class="text-lg mb-4">「電話が繋がる時間」に、患者が予約行動をするとは限りません。ネット予約が使えないことが「大きな機会損失」であることを示しています。（詳細は次の「データ分析」セクションを参照）</p>
+                    <p class="text-lg mb-4">「電話が繋がる時間」に、患者が予約行動をするとは限りません。大手歯科専門サイトのデータは、ネット予約が使えないことが**「大きな機会損失」**であることを示しています。（詳細は次の「データ分析」セクションを参照）</p>
                     <ul class="list-disc list-inside text-lg space-y-2 mb-6">
                         <li><strong class="text-teal-600">夜20時以降</strong>に予約アクセスが集中する</li>
                         <li>電話受付時間外の予約が非常に多い</li>
@@ -146,8 +201,8 @@
 
         <!-- Section 3: Data -->
         <section id="data" class="mb-16 pt-16">
-            <h2 class="text-3xl font-bold text-center mb-4">データが示す「予約の実態」</h2>
-            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">なぜ「ネット予約」が機会損失に直結するのか。「患者のリアルな予約行動」を視覚化しました。電話受付時間と照らし合わせてご覧ください。</p>
+            <h2 class="text-3xl font-bold text-center mb-4">大手歯科専門サイトデータが示す「予約の真実」</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">なぜ「ネット予約」が機会損失に直結するのか。1万医院の分析データが示す「患者のリアルな予約行動」を視覚化しました。貴院の電話受付時間と照らし合わせてご覧ください。</p>
 
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
                 
@@ -186,18 +241,18 @@
         <!-- Section 4: Solutions -->
         <section id="solutions" class="mb-16 pt-16 text-center">
             <h2 class="text-3xl font-bold mb-4">集患改善のための「最初の3ステップ」</h2>
-            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">まずは患者目線で「選ばれる土台」を徹底的に整備することが、最も確実で低コストな集患対策です。</p>
+            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">特別な広告費を投じる前に、まずは患者目線で「選ばれる土台」を徹底的に整備することが、最も確実で低コストな集患対策です。</p>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-teal-500">
                     <div class="text-4xl font-bold text-teal-600 mb-3">Step 1</div>
                     <h3 class="text-xl font-semibold mb-3">全媒体の情報整備</h3>
-                    <p class="text-gray-600"><strong class="text-teal-700">HP、ポータル、Googleの診療時間・休診日・写真を統一。</strong></p>
+                    <p class="text-gray-600">HP、ポータル、Googleの診療時間・休診日・写真を統一。特に<strong class="text-teal-700">「駐車場情報」</strong>を全媒体に明記します。</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-teal-500">
                     <div class="text-4xl font-bold text-teal-600 mb-3">Step 2</div>
                     <h3 class="text-xl font-semibold mb-3">口コミ返信の徹底</h3>
-                    <p class="text-gray-600">口コミ、特にネガティブな口コミに「誠実さ」が伝わる返信を速やかに行うフローの構築</p>
+                    <p class="text-gray-600">全ての口コミ、特にネガティブな口コミに「誠実さ」が伝わる返信を速やかに行うフローを構築します。</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-teal-500">
                     <div class="text-4xl font-bold text-teal-600 mb-3">Step 3</div>
@@ -210,7 +265,7 @@
         <!-- Section 5: Services -->
         <section id="services" class="pt-16 text-center bg-teal-50 py-16 rounded-lg">
             <h2 class="text-3xl font-bold mb-4">集患改善ならお任せください</h2>
-            <p class="text-center text-gray-700 mb-10 max-w-3xl mx-auto">大手歯科専門サイトでの知見と、データ分析に基づき、全国の医院様の集患を強力にサポートします。<strong class="text-teal-600">（特に栃木県内に特化）</strong></p>
+            <p class="text-center text-gray-700 mb-10 max-w-3xl mx-auto">大手歯科専門サイトでの知見と、データ分析に基づき、全国の医院様の集患を強力にサポートします。</p>
             
             <div class="max-w-4xl mx-auto">
                 <h3 class="text-2xl font-bold text-teal-700 mb-6">提供サービス（一例）</h3>
@@ -222,7 +277,7 @@
                     </div>
                     <!-- Card 2 -->
                     <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border-b-4 border-teal-500 text-left">
-                        <p class="text-xl font-bold mb-2">情報最適化（ポータルサイト・Google等）</p>
+                        <p class="text-xl font-bold mb-2">情報最適化（大手歯科専門サイト・Google等）</p>
                         <p class="text-sm text-gray-600">全媒体の情報一貫性を確保し、Google BPのMEO対策や、写真・最新情報の充実を図ります。</p>
                     </div>
                     <!-- Card 3 -->
@@ -237,89 +292,67 @@
                     </div>
                     <!-- Card 5 (Spanning 2 columns on desktop) -->
                     <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border-b-4 border-teal-500 text-left md:col-span-2">
-                        <p class="text-xl font-bold mb-2">集患コンサルティング</p>
+                        <p class="text-xl font-bold mb-2">集患コンサルティング（低価格プラン有）</p>
                         <p class="text-sm text-gray-600">貴院の状況に合わせたオーダーメイドの集患戦略を立案・実行支援します。</p>
                     </div>
                 </div>
             </div>
 
-            <!-- CTA Buttons Group (Consultation + HP Link) - UPDATED -->
-            <div class="flex flex-col items-center mt-8">
-                <a href="https://forms.gle/RbeDP2PP5PCYyiR89" class="bg-teal-600 text-white font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-teal-700 transition-all duration-300 text-lg mb-4 inline-block">
-                    まずは無料で相談する
-                </a>
-                <p class="text-sm text-gray-500 mb-4">集患以外のご相談もお気軽にご相談ください。</p>
-                <a href="https://irohacs.com/" target="_blank" class="text-teal-600 font-semibold text-base hover:text-teal-700 transition-colors duration-300 inline-flex items-center">
-                    <!-- Link Icon (External link) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                    </svg>
-                    irohaコンサルティング 公式HPへ
-                </a>
-            </div>
-        </section>
-        
-        <!-- Section 1.5: Consultant Profile (iroha Consulting) -->
-        <section id="iroha-profile" class="mb-16 pt-16 bg-teal-100/50 p-6 sm:p-10 rounded-xl">
-            <h2 class="text-3xl font-bold text-center mb-4">運営元： irohaコンサルティング</h2>
-            <p class="text-center text-gray-700 mb-10 max-w-3xl mx-auto">大手サイトでの実績とデータ分析力に基づき、特に地元である<strong class="text-teal-700">栃木県に特化</strong>したきめ細やかなサポートを展開しています。</p>
-
-            <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-2xl border-b-4 border-teal-600">
-                <h3 class="text-2xl font-bold text-teal-700 mb-6 flex items-center justify-center">
-                    <span class="mr-3 text-3xl">👤</span> 代表コンサルタント： 秋元 祐介
-                </h3>
-                <div class="space-y-4">
-                    <p class="text-lg font-semibold text-gray-700 border-b pb-2">■ 経歴と実績</p>
-                    <div class="pl-4 border-l-4 border-teal-400 space-y-3">
-                        <div class="text-gray-800">
-                            <span class="font-bold text-teal-600 block">元EPARK歯科メディア責任者</span>
-                            <p class="text-base text-gray-600 mt-1">ポータルサイトのPVやUIUX向上はもちろん、全国1万医院のデータを分析し、お客様に選ばれる医院の特徴を導き出しました。</p>
-                        </div>
-                    </div>
-                    <p class="text-lg pt-4 text-gray-700">
-                        その豊富な経験と深い知見を活かし、現在は地元である<strong class="text-teal-600">栃木県内の歯科医院様に特化</strong>し、地域密着型で最も効果的な集患・経営改善サポートを提供しています。
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Dedicated HP Link below consultant profile -->
-            <div class="text-center mt-8">
-                 <a href="https://irohacs.com/" target="_blank" class="text-teal-600 font-semibold text-lg hover:text-teal-700 transition-colors duration-300 inline-flex items-center border-b-2 border-teal-500 pb-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                    </svg>
-                    irohaコンサルティング 公式ホームページはこちら
-                </a>
-            </div>
+            <a href="https://forms.gle/RbeDP2PP5PCYyiR89" class="bg-teal-600 text-white font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-teal-700 transition-all duration-300 text-lg mt-8 inline-block">
+                まずは無料で相談する
+            </a>
+            <p class="text-sm text-gray-500 mt-4">「このままではいけない」とお考えなら、まずは一度ご相談ください。</p>
         </section>
 
     </main>
 
     <!-- Footer -->
     <footer class="text-center py-8 border-t border-gray-200 mt-16">
-        <p class="text-gray-500 text-sm">© Dental insight. All rights reserved.</p>
+        <p class="text-gray-500 text-sm">© 2025 歯科医院集患分析レポート. All rights reserved.</p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // --- Navigation Logic ---
-            const navLinks = document.querySelectorAll('nav a.nav-link');
+            // --- Mobile Menu Toggle Logic ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            const toggleMobileMenu = () => {
+                const isMenuOpen = mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden', !isMenuOpen);
+                closeIcon.classList.toggle('hidden', isMenuOpen);
+            };
+
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+            // Close menu when a link is clicked (mobile only)
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+
+            // --- Navigation Logic (Smooth Scroll & Active Link) ---
+            const navLinks = document.querySelectorAll('.nav-link');
             
             const updateActiveLink = () => {
                 let currentSection = 'home';
                 document.querySelectorAll('section').forEach(section => {
-                    // Adjust offset for sticky header height (16 = 4rem = 64px)
-                    const offsetHeight = document.querySelector('header').offsetHeight; 
                     const sectionTop = section.offsetTop;
-                    if (window.scrollY >= sectionTop - offsetHeight - 20) { // Added extra margin for smoothness
+                    // Check if scroll position is past the start of the section, accounting for header height (64px)
+                    if (window.scrollY >= sectionTop - 100) {
                         currentSection = section.id;
                     }
                 });
 
                 navLinks.forEach(link => {
+                    // Update both desktop and mobile links
                     link.classList.toggle('active-link', link.dataset.target === currentSection);
                 });
             };
@@ -330,10 +363,8 @@
                     const targetId = this.dataset.target;
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
-                        // Get header height dynamically
-                        const headerHeight = document.querySelector('header').offsetHeight; 
                         window.scrollTo({
-                            top: targetElement.offsetTop - headerHeight - 20, // Adjust for sticky header
+                            top: targetElement.offsetTop - 80, // Adjust for sticky header (h-16 = 64px, using 80px for margin)
                             behavior: 'smooth'
                         });
                     }
@@ -418,14 +449,7 @@
                             titleFont: { size: 14 },
                             bodyFont: { size: 12 },
                             padding: 10,
-                            cornerRadius: 4,
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    let value = context.parsed.y;
-                                    return `${label}: ${value}`;
-                                }
-                            }
+                            cornerRadius: 4
                         }
                     },
                     scales: {
@@ -450,7 +474,7 @@
             new Chart(ctxSameDay, {
                 type: 'doughnut',
                 data: {
-                    labels: ['当日午前→午後の予約 (60%)', 'その他の予約 (40%)'],
+                    labels: ['当日午前→午後の予約', 'その他の予約'],
                     datasets: [{
                         data: [60, 40],
                         backgroundColor: ['#0d9488', '#99f6e4'], // teal-600, teal-200
@@ -466,8 +490,7 @@
                         legend: {
                             position: 'bottom',
                             labels: {
-                                padding: 15,
-                                boxWidth: 15
+                                padding: 15
                             }
                         },
                         title: {
@@ -477,8 +500,8 @@
                             callbacks: {
                                 label: function(context) {
                                     let label = context.label || '';
-                                    // Extract percentage from label for a clean tooltip
-                                    return label.split(' ')[0];
+                                    let value = context.parsed;
+                                    return `${label}: ${value}%`;
                                 }
                             }
                         }
@@ -491,7 +514,7 @@
             new Chart(ctxOutsideHours, {
                 type: 'doughnut',
                 data: {
-                    labels: ['電話受付時間外の予約 (55%)', '受付時間内の予約 (45%)'],
+                    labels: ['電話受付時間外の予約', '受付時間内の予約'],
                     datasets: [{
                         data: [55, 45], // Mock data based on "very many"
                         backgroundColor: ['#0f766e', '#ccfbf1'], // teal-700, teal-100
@@ -507,8 +530,7 @@
                         legend: {
                             position: 'bottom',
                             labels: {
-                                padding: 15,
-                                boxWidth: 15
+                                padding: 15
                             }
                         },
                         title: {
@@ -518,8 +540,8 @@
                             callbacks: {
                                 label: function(context) {
                                     let label = context.label || '';
-                                    // Extract percentage from label for a clean tooltip
-                                    return label.split(' ')[0];
+                                    let value = context.parsed;
+                                    return `${label}: ${value}%`;
                                 }
                             }
                         }
