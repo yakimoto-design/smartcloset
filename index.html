@@ -3,584 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google tag (gtag.js) - アナリティクスタグを追加 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4Y91FWEL6Y"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-4Y91FWEL6Y');
-    </script>
-    <!-- SEO/AI検索対策: タイトルタグの最適化 -->
-    <title>【データ分析】歯科医院の集患・経営改善コンサルティング｜Dental Insight (irohaコンサルティング)</title> 
-    <!-- SEO/AI検索対策: メタディスクリプションの追加 -->
-    <meta name="description" content="大手歯科専門サイトで1万医院を分析したデータに基づく、歯科医院向けの集患・経営改善コンサルティングサービス。患者が選ばない「3つの脱落要因」を徹底解説し、栃木県に特化した戦略を提供します。"> 
+    <title>歯科医院向けGoogleマップ集客最適化（MEO） | irohaコンサルティング</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
-            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #1e293b;
+            scroll-behavior: smooth;
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
+        .hero-gradient {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
         }
-        .chart-container-bar {
-            max-width: 800px;
-            height: 350px;
-            max-height: 400px;
+        .section-padding {
+            padding: 80px 20px;
         }
-        .chart-container-doughnut {
-            max-width: 350px;
-            height: 300px;
-            max-height: 350px;
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        nav a {
-            transition: all 0.3s ease;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
-        nav a.active-link {
-            color: #0d9488; /* teal-600 */
-            font-weight: 600;
-            border-bottom: 2px solid #0d9488;
-        }
-        .tab-btn {
-            transition: all 0.3s ease;
-        }
-        .tab-btn.active-tab {
-            background-color: #0d9488; /* teal-600 */
-            color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        /* モバイルメニューのスタイル調整 */
-        #nav-menu li .nav-link {
-            padding: 8px 16px; /* モバイルでのタップ領域を確保 */
-        }
-        @media (min-width: 640px) { /* smブレークポイント以上 */
-             #nav-menu li .nav-link {
-                padding: 4px 4px; /* デスクトップではパディングを戻す */
-                padding-top: 8px; 
-             }
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 60px 15px;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 leading-relaxed">
+<body class="bg-slate-50">
 
-    <!-- Header & Navigation -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto max-w-6xl px-4">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="text-2xl font-bold text-teal-700">
-                    Dental Insight
-                </div>
-                
-                <!-- Hamburger Menu Button (Mobile Only) -->
-                <button id="menu-button" class="sm:hidden text-gray-600 hover:text-teal-600 focus:outline-none p-2 rounded-md">
-                    <!-- Menu Icon -->
-                    <svg id="menu-icon" class="h-6 w-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    <!-- Close Icon (Initially hidden) -->
-                    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-
-                <!-- Navigation Links (Toggled on mobile, always visible/flex on desktop) -->
-                <!-- モバイルではhidden、デスクトップではflexで表示 -->
-                <ul id="nav-menu" class="hidden sm:flex flex-col sm:flex-row sm:items-center sm:space-x-2 sm:space-x-4 md:space-x-8 w-full sm:w-auto absolute sm:static top-16 left-0 bg-white sm:bg-transparent shadow-md sm:shadow-none border-t sm:border-t-0 py-2">
-                    <li><a href="#home" data-target="home" class="nav-link block text-gray-600 hover:text-teal-600 text-sm sm:text-base">ホーム</a></li>
-                    <li><a href="#diagnosis" data-target="diagnosis" class="nav-link block text-gray-600 hover:text-teal-600 text-sm sm:text-base">3つの脱落要因</a></li>
-                    <li><a href="#data" data-target="data" class="nav-link block text-gray-600 hover:text-teal-600 text-sm sm:text-base">データ分析</a></li>
-                    <li><a href="#solutions" data-target="solutions" class="nav-link block text-gray-600 hover:text-teal-600 text-sm sm:text-base">解決策</a></li>
-                    <li><a href="#services" data-target="services" class="nav-link block text-gray-600 hover:text-teal-600 text-sm sm:text-base">サービス</a></li>
-                    <li><a href="#iroha-profile" data-target="iroha-profile" class="nav-link block text-gray-600 hover:text-teal-600 text-sm sm:text-base">コンサルタント</a></li>
-                </ul>
-            </div>
-        </nav>
+    <!-- ヘッダー -->
+    <header class="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="font-bold text-xl text-sky-600 tracking-wider">irohaコンサルティング</div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSest5LEzvSpGkOEPvUIvd4_MH3thTMb-dSBBODmBh508VXRAg/viewform?usp=header" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded-full text-sm font-bold transition-colors">
+                無料診断・相談
+            </a>
+        </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto max-w-6xl px-4 py-8 sm:py-12">
-
-        <!-- Section 1: Home -->
-        <section id="home" class="text-center mb-16 pt-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-teal-700 mb-4">なぜ、患者はあなたの医院を選ばないのか？</h1>
-            <p class="text-lg sm:text-xl text-gray-700 mb-6 max-w-3xl mx-auto">大手歯科専門サイトで1万医院を分析してわかったのは「選ばれない医院が同じ“落とし穴”に落ちている」という事実です。</p>
-        </section>
-
-        <!-- Section 2: Diagnosis (The 3 Dropout Points) -->
-        <section id="diagnosis" class="mb-16 pt-16">
-            <h2 class="text-3xl font-bold text-center mb-4">「3つの脱落要因」</h2>
-            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">患者は医院を探す際、無意識に「減点法」で医院をチェックしています。患者が医院選びを「やめる」決定的な3つのポイントを解説します。</p>
-            
-            <!-- Tab Buttons -->
-            <div class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mb-8">
-                <button id="btn-info" class="tab-btn text-lg font-semibold py-3 px-6 rounded-lg shadow-sm border border-gray-300 bg-white text-gray-700 hover:bg-gray-100">
-                    <span class="text-2xl mr-2">①</span> 情報の不足
-                </button>
-                <button id="btn-review" class="tab-btn text-lg font-semibold py-3 px-6 rounded-lg shadow-sm border border-gray-300 bg-white text-gray-700 hover:bg-gray-100">
-                    <span class="text-2xl mr-2">②</span> 口コミの放置
-                </button>
-                <button id="btn-booking" class="tab-btn text-lg font-semibold py-3 px-6 rounded-lg shadow-sm border border-gray-300 bg-white text-gray-700 hover:bg-gray-100">
-                    <span class="text-2xl mr-2">③</span> 予約の不便さ
-                </button>
-            </div>
-
-            <!-- Tab Content -->
-            <div class="bg-white p-6 sm:p-10 rounded-lg shadow-xl max-w-4xl mx-auto min-h-[300px]">
-                <!-- Content 1: Information -->
-                <div id="content-info" class="tab-content hidden">
-                    <h3 class="text-2xl font-bold text-teal-700 mb-4">要因①：正確・最新・多角的な情報発信が徹底されていない</h3>
-                    <p class="text-lg mb-6">医院選びは「情報の総合点」で決まる時代です。患者は複数の媒体を必ずチェックします。</p>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 text-center mb-6">
-                        <div class="bg-teal-50 border border-teal-200 text-teal-800 p-3 rounded-lg"><p>ホームページ</p></div>
-                        <div class="bg-teal-50 border border-teal-200 text-teal-800 p-3 rounded-lg"><p>ポータル</p></div>
-                        <div class="bg-teal-50 border border-teal-200 text-teal-800 p-3 rounded-lg"><p>Google</p></div>
-                        <div class="bg-teal-50 border border-teal-200 text-teal-800 p-3 rounded-lg"><p>マップ</p></div>
-                        <div class="bg-teal-50 border border-teal-200 text-teal-800 p-3 rounded-lg"><p>SNS</p></div>
-                    </div>
-                    <p class="text-lg mb-4">これらの情報にズレ（診療時間、休診日、写真不足）があると、それだけで「信頼できない医院」として脱落要因になります。</p>
-                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-                        <p class="font-bold text-yellow-800">【重要ポイント】</p>
-                        <p class="text-yellow-700">特に「<strong class="font-bold">駐車場の有無</strong>」や「<strong class="font-bold">アクセス方法</strong>」は、多くの患者にとって決定的な判断材料です。この情報が不十分なだけで、選考から除外されるリスクがあります。</p>
-                    </div>
-                </div>
-                <!-- Content 2: Reviews -->
-                <div id="content-review" class="tab-content hidden">
-                    <h3 class="text-2xl font-bold text-teal-700 mb-4">要因②：口コミ返信で“誠実さ”を伝えられていない</h3>
-                    <p class="text-lg mb-4">口コミへの返信対応は、医院の「誠実さ」「トラブル時の対応力」「患者への向き合い方」が最も伝わる部分です。</p>
-                    <p class="text-lg mb-6">特に<strong class="text-red-600">ネガティブな口コミへの丁寧な返信</strong>は、他の患者からの信頼を生む大きなチャンスです。</p>
-                    <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r-lg">
-                        <p class="font-bold text-red-800">【見過ごされるリスク】</p>
-                        <p class="text-red-700">返信が全くない医院は、それだけで「患者対応力が弱い」「問題に向き合わない」と判断され、選考から脱落することがあります。</p>
-                    </div>
-                </div>
-                <!-- Content 3: Booking -->
-                <div id="content-booking" class="tab-content hidden">
-                    <h3 class="text-2xl font-bold text-teal-700 mb-4">要因③：ネット予約導線が整っていない</h3>
-                    <p class="text-lg mb-4">「電話が繋がる時間」に、患者が予約行動をするとは限りません。ネット予約が使えないことが「大きな機会損失」であることを示しています。（詳細は次の「データ分析」セクションを参照）</p>
-                    <ul class="list-disc list-inside text-lg space-y-2 mb-6">
-                        <li><strong class="text-teal-600">夜20時以降</strong>に予約アクセスが集中する</li>
-                        <li>電話受付時間外の予約が非常に多い</li>
-                        <li><strong class="text-teal-600">当日午前</strong>にアクセスし、<strong class="text-teal-600">午後</strong>の予約をする人が<strong class="text-teal-600">6割</strong>にのぼる</li>
-                    </ul>
-                    <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
-                        <p class="font-bold text-blue-800">【予約の決定要因】</p>
-                        <p class="text-blue-700">働く世代や忙しい患者は、「<strong class="font-bold">今すぐ予約を確定させたい</strong>」というニーズが非常に高いです。ネット予約がない場合、そのまま離脱に繋がります。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Data -->
-        <section id="data" class="mb-16 pt-16">
-            <h2 class="text-3xl font-bold text-center mb-4">データが示す「予約の実態」</h2>
-            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">なぜ「ネット予約」が機会損失に直結するのか。「患者のリアルな予約行動」を視覚化しました。電話受付時間と照らし合わせてご覧ください。</p>
-
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
-                
-                <!-- Bar Chart: Access Time -->
-                <div class="lg:col-span-3 bg-white p-6 rounded-lg shadow-xl">
-                    <h3 class="text-xl font-semibold text-center mb-4">患者のアクセス時間帯</h3>
-                    <div class="chart-container chart-container-bar">
-                        <canvas id="accessTimeChart"></canvas>
-                    </div>
-                    <p class="text-sm text-gray-500 text-center mt-4">医院の電話受付が終了する18時以降、特に20時以降に予約のためのアクセスが集中していることが分かります。</p>
-                </div>
-
-                <!-- Doughnut Charts -->
-                <div class="lg:col-span-2 flex flex-col gap-8">
-                    <!-- Doughnut 1: Same Day -->
-                    <div class="bg-white p-6 rounded-lg shadow-xl">
-                        <h3 class="text-xl font-semibold text-center mb-4">当日予約の割合</h3>
-                        <div class="chart-container chart-container-doughnut">
-                            <canvas id="sameDayBookingChart"></canvas>
-                        </div>
-                        <p class="text-sm text-gray-500 text-center mt-4">当日予約のうち6割が「午前中に予約して午後に来院」というデータ。「今すぐ」のニーズがいかに多いかが分かります。</p>
-                    </div>
-                    
-                    <!-- Doughnut 2: Outside Hours (Mock Data) -->
-                    <div class="bg-white p-6 rounded-lg shadow-xl">
-                        <h3 class="text-xl font-semibold text-center mb-4">電話受付時間外の予約</h3>
-                        <div class="chart-container chart-container-doughnut">
-                            <canvas id="outsideHoursChart"></canvas>
-                        </div>
-                        <p class="text-sm text-gray-500 text-center mt-4">（データ例）全予約のうち、半数以上が電話受付時間外に行われている医院も珍しくありません。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4: Solutions -->
-        <section id="solutions" class="mb-16 pt-16 text-center">
-            <h2 class="text-3xl font-bold mb-4">集患改善のための「最初の3ステップ」</h2>
-            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">まずは患者目線で「選ばれる土台」を徹底的に整備することが、最も確実で低コストな集患対策です。</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-teal-500">
-                    <div class="text-4xl font-bold text-teal-600 mb-3">Step 1</div>
-                    <h3 class="text-xl font-semibold mb-3">全媒体の情報整備</h3>
-                    <p class="text-gray-600"><strong class="text-teal-700">HP、ポータル、Googleの診療時間・休診日・写真を統一。</strong></p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-teal-500">
-                    <div class="text-4xl font-bold text-teal-600 mb-3">Step 2</div>
-                    <h3 class="text-xl font-semibold mb-3">口コミ返信の徹底</h3>
-                    <p class="text-gray-600">口コミ、特にネガティブな口コミに「誠実さ」が伝わる返信を速やかに行うフローの構築</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-teal-500">
-                    <div class="text-4xl font-bold text-teal-600 mb-3">Step 3</div>
-                    <p class="text-gray-600">24時間365日、患者が「予約したい」と思った瞬間に予約を完結できるネット予約導線を設計します。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: Services -->
-        <section id="services" class="pt-16 text-center bg-teal-50 py-16 rounded-lg">
-            <h2 class="text-3xl font-bold mb-4">集患改善ならお任せください</h2>
-            <p class="text-center text-gray-700 mb-10 max-w-3xl mx-auto">大手歯科専門サイトでの知見と、データ分析に基づき、全国の医院様の集患を強力にサポートします。<strong class="text-teal-600">（特に栃木県内に特化）</strong></p>
-            
-            <div class="max-w-4xl mx-auto">
-                <h3 class="text-2xl font-bold text-teal-700 mb-6">提供サービス（一例）</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Card 1 -->
-                    <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border-b-4 border-teal-500 text-left">
-                        <p class="text-xl font-bold mb-2">ホームページ診断・改善</p>
-                        <p class="text-sm text-gray-600">患者目線でのUI/UX、情報精度をチェックし、コンテンツ改善を提案します。</p>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border-b-4 border-teal-500 text-left">
-                        <p class="text-xl font-bold mb-2">情報最適化（ポータルサイト・Google等）</p>
-                        <p class="text-sm text-gray-600">全媒体の情報一貫性を確保し、Google BPのMEO対策や、写真・最新情報の充実を図ります。</p>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border-b-4 border-teal-500 text-left">
-                        <p class="text-xl font-bold mb-2">口コミ返信サポート</p>
-                        <p class="text-sm text-gray-600">誠実さを伝える返信テンプレート作成と、ネガティブ対応を含む運用フローをサポートします。</p>
-                    </div>
-                    <!-- Card 4 -->
-                    <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border-b-4 border-teal-500 text-left">
-                        <p class="text-xl font-bold mb-2">ネット予約導線の設計・改善</p>
-                        <p class="text-sm text-gray-600">24時間予約可能な体制の構築、導線設計を行い、夜間・当日予約の機会損失を徹底排除します。</p>
-                    </div>
-                    <!-- Card 5 (Spanning 2 columns on desktop) -->
-                    <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border-b-4 border-teal-500 text-left md:col-span-2">
-                        <p class="text-xl font-bold mb-2">集患コンサルティング</p>
-                        <p class="text-sm text-gray-600">貴院の状況に合わせたオーダーメイドの集患戦略を立案・実行支援します。</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA Buttons Group (Consultation + HP Link) - UPDATED -->
-            <div class="flex flex-col items-center mt-8">
-                <a href="https://forms.gle/RbeDP2PP5PCYyiR89" class="bg-teal-600 text-white font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-teal-700 transition-all duration-300 text-lg mb-4 inline-block">
-                    まずは無料で相談する
-                </a>
-                <p class="text-sm text-gray-500 mb-4">集患以外のご相談もお気軽にご相談ください。</p>
-                <a href="https://irohacs.com/" target="_blank" class="text-teal-600 font-semibold text-base hover:text-teal-700 transition-colors duration-300 inline-flex items-center">
-                    <!-- Link Icon (External link) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                    </svg>
-                    irohaコンサルティング 公式HPへ
+    <!-- ヒーローセクション -->
+    <section class="hero-gradient pt-32 pb-20 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <p class="text-sky-600 font-bold tracking-[0.2em] mb-4">DENTAL CLINIC MEO STRATEGY</p>
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-8">
+                Googleマップ集客<br>最適化のご提案
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed">
+                「地域＋歯科」で選ばれる医院になるための新基準
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSest5LEzvSpGkOEPvUIvd4_MH3thTMb-dSBBODmBh508VXRAg/viewform?usp=header" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white px-10 py-4 rounded-xl text-lg font-bold shadow-lg shadow-sky-200 transition-all">
+                    無料で診断を申し込む
                 </a>
             </div>
-        </section>
-        
-        <!-- Section 1.5: Consultant Profile (iroha Consulting) -->
-        <section id="iroha-profile" class="mb-16 pt-16 bg-teal-100/50 p-6 sm:p-10 rounded-xl">
-            <h2 class="text-3xl font-bold text-center mb-4">運営元： irohaコンサルティング</h2>
-            <p class="text-center text-gray-700 mb-10 max-w-3xl mx-auto">大手サイトでの実績とデータ分析力に基づき、特に地元である<strong class="text-teal-700">栃木県に特化</strong>したきめ細やかなサポートを展開しています。</p>
+        </div>
+    </section>
 
-            <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-2xl border-b-4 border-teal-600">
-                <h3 class="text-2xl font-bold text-teal-700 mb-6 flex items-center justify-center">
-                    <span class="mr-3 text-3xl">👤</span> 代表コンサルタント： 秋元 祐介
-                </h3>
-                <div class="space-y-4">
-                    <p class="text-lg font-semibold text-gray-700 border-b pb-2">■ 経歴と実績</p>
-                    <div class="pl-4 border-l-4 border-teal-400 space-y-3">
-                        <div class="text-gray-800">
-                            <span class="font-bold text-teal-600 block">元EPARK歯科メディア責任者</span>
-                            <p class="text-base text-gray-600 mt-1">ポータルサイトのPVやUIUX向上はもちろん、全国1万医院のデータを分析し、お客様に選ばれる医院の特徴を導き出しました。</p>
-                        </div>
-                    </div>
-                    <p class="text-lg pt-4 text-gray-700">
-                        その豊富な経験と深い知見を活かし、現在は地元である<strong class="text-teal-600">栃木県内の歯科医院様に特化</strong>し、地域密着型で最も効果的な集患・経営改善サポートを提供しています。
+    <!-- 代表紹介セクション -->
+    <section class="section-padding bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-10 bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-100">
+                <div class="w-48 h-48 md:w-64 md:h-64 flex-shrink-0 bg-white rounded-2xl overflow-hidden shadow-lg border-4 border-white">
+                    <img src="image1.png" alt="代表 秋元 祐介" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <p class="text-sky-600 font-bold mb-2">irohaコンサルティング 代表</p>
+                    <h2 class="text-3xl font-bold mb-4">秋元 祐介</h2>
+                    <p class="text-slate-700 font-bold mb-4 leading-relaxed italic">
+                        元EPARK歯科 メディア責任者
+                    </p>
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                        約1万以上の歯科医院データを分析し、長年にわたり集患貢献へとつなげてきました。歯科医院選びをする患者様の心理と行動動線を熟知した専門家が、貴院のMEO運用・監修を直接担当。他社には真似できない、データに基づいた本質的な提案を実現します。
                     </p>
                 </div>
             </div>
-            
-            <!-- Dedicated HP Link below consultant profile -->
-            <div class="text-center mt-8">
-                 <a href="https://irohacs.com/" target="_blank" class="text-teal-600 font-semibold text-lg hover:text-teal-700 transition-colors duration-300 inline-flex items-center border-b-2 border-teal-500 pb-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                    </svg>
-                    irohaコンサルティング 公式ホームページはこちら
-                </a>
+        </div>
+    </section>
+
+    <!-- MEOの重要性 -->
+    <section class="section-padding bg-slate-50">
+        <div class="max-w-6xl mx-auto text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">なぜ今、MEO対策なのか？</h2>
+            <p class="text-slate-500 italic">Google検索のトップを占める「マップ」の重要性</p>
+        </div>
+        
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <h3 class="text-2xl font-bold mb-6 leading-snug">
+                    広告の次に表示されるのは<br>「Googleマップ」です
+                </h3>
+                <p class="text-slate-600 mb-6">
+                    「小山市 歯科」などの検索語句で、ウェブサイトの検索結果（SEO）よりも上に表示されます。
+                </p>
+                <p class="text-slate-600 mb-6">
+                    スマートフォンユーザーにとって、最も指が届きやすく、視認性が高いエリアです。ここに表示されないことは、大きな機会損失を意味します。
+                </p>
             </div>
-        </section>
+            <div class="order-1 md:order-2 bg-white p-4 rounded-3xl shadow-xl overflow-hidden">
+                <img src="image2.png" alt="MEO検索結果イメージ" class="w-full h-auto rounded-xl">
+            </div>
+        </div>
+    </section>
 
-    </main>
+    <!-- 利用率データ -->
+    <section class="section-padding bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-10">圧倒的なユーザー利用率</h2>
+            <div class="flex flex-col items-center mb-10">
+                <span class="text-sky-500 font-bold text-8xl md:text-9xl leading-none">88<span class="text-4xl md:text-5xl ml-1">%</span></span>
+                <p class="text-xl font-bold mt-4 text-slate-700">「地域＋歯科」で検索</p>
+            </div>
+            <h3 class="text-2xl font-bold mb-6">マップとHPの併用が一般化</h3>
+            <p class="text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                約88%のユーザーが地域名を含めた検索を行い、Googleマップの情報を参考に医院探しをしています。単にHPがあるだけではなく、マップ上の「口コミ」や「写真」が選定の決め手となっています。
+            </p>
+        </div>
+    </section>
 
-    <!-- Footer -->
-    <footer class="text-center py-8 border-t border-gray-200 mt-16">
-        <p class="text-gray-500 text-sm">© Dental insight. All rights reserved.</p>
+    <!-- 5つの情報 -->
+    <section class="section-padding bg-slate-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">患者様が注目する「5つの情報」</h2>
+                <p class="text-slate-500">プロの視点で全項目を最高水準に整えます。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm card border border-slate-100 text-center">
+                    <div class="text-sky-500 text-3xl mb-6"><i class="fa-solid fa-star-half-stroke"></i></div>
+                    <h4 class="text-xl font-bold mb-4">口コミと評価</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">最新の評価と返信の丁寧さが信頼に直結します。</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm card border border-slate-100 text-center">
+                    <div class="text-sky-500 text-3xl mb-6"><i class="fa-solid fa-camera-retro"></i></div>
+                    <h4 class="text-xl font-bold mb-4">院内の写真</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">雰囲気や清潔感、最新設備を視覚的に伝えます。</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm card border border-slate-100 text-center">
+                    <div class="text-sky-500 text-3xl mb-6"><i class="fa-solid fa-clock"></i></div>
+                    <h4 class="text-xl font-bold mb-4">診療時間</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">正確な営業時間は、来院の際の必須情報です。</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm card border border-slate-100 text-center">
+                    <div class="text-sky-500 text-3xl mb-6"><i class="fa-solid fa-globe"></i></div>
+                    <h4 class="text-xl font-bold mb-4">ウェブサイト</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">マップから詳細なHPへスムーズに誘導します。</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm card border border-slate-100 text-center">
+                    <div class="text-sky-500 text-3xl mb-6"><i class="fa-solid fa-calendar-check"></i></div>
+                    <h4 class="text-xl font-bold mb-4">予約導線</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">今すぐ予約したいニーズを逃さずキャッチします。</p>
+                </div>
+                <div class="bg-sky-500 p-8 rounded-2xl shadow-lg text-white flex flex-col justify-center items-center text-center">
+                    <h4 class="text-2xl font-bold mb-4">これらを最適化</h4>
+                    <p class="text-sky-100 text-sm leading-relaxed">1万件超のデータを持つプロが最高水準に整えます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- リスク説明 -->
+    <section class="section-padding bg-white">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="bg-slate-100 p-4 rounded-3xl overflow-hidden">
+                <img src="image3.png" alt="情報放置のリスクイメージ" class="w-full h-auto rounded-xl">
+            </div>
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">放置することのリスク</h2>
+                <h3 class="text-xl font-bold mb-4 text-red-500 italic">意図しない情報の掲載</h3>
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    Googleの自動生成や第三者の投稿により、誤った診療時間や古い外観写真が掲載される可能性があります。
+                </p>
+                <p class="text-slate-600 mb-6 leading-relaxed font-bold">
+                    「正しい情報がない」＝「不親切な医院」という誤解を招く前に、プロによる正しい運用が必要です。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金プラン -->
+    <section class="section-padding bg-slate-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">サービス内容と料金プラン</h2>
+                <p class="text-slate-500">初期設定から継続的な分析・改善までフルサポート</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- プラン1 -->
+                <div class="bg-white border border-slate-200 p-10 rounded-3xl shadow-sm">
+                    <h3 class="text-2xl font-bold mb-6 text-sky-600">初期パッケージ内容</h3>
+                    <ul class="space-y-4 mb-10 text-slate-700">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-sky-500 rounded-full"></span> <span>プロフィール最適化：基本情報の徹底整理</span></li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-sky-500 rounded-full"></span> <span>紹介文・メニュー作成：医院の強みを言語化</span></li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-sky-500 rounded-full"></span> <span>画像登録：魅力が伝わる写真を戦略的に配置</span></li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-sky-500 rounded-full"></span> <span>ウェブ・予約動線設置：予約率の最大化</span></li>
+                    </ul>
+                    <div class="pt-6 border-t border-slate-100">
+                        <p class="text-slate-500 text-sm mb-1">初期費用（パッケージ価格）</p>
+                        <p class="text-4xl font-bold text-slate-900">3,300<span class="text-xl ml-1 font-bold text-slate-500">円 (税込)</span></p>
+                        <p class="text-xs text-sky-600 mt-2 font-bold">※導入をスムーズに進めるための特別価格</p>
+                    </div>
+                </div>
+
+                <!-- プラン2 -->
+                <div class="bg-white border-2 border-sky-500 p-10 rounded-3xl shadow-lg shadow-sky-100">
+                    <h3 class="text-2xl font-bold mb-6 text-sky-600">月額プラン（運用サポート）</h3>
+                    <ul class="space-y-4 mb-10 text-slate-700">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-sky-500 rounded-full"></span> <span>お知らせ投稿：最新ニュースや休診日を随時配信</span></li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-sky-500 rounded-full"></span> <span>口コミ返信サポート：患者様との信頼関係を構築</span></li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-sky-500 rounded-full"></span> <span>月次レポート：数値を分析し、改善策を具体的に提示</span></li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-sky-500 rounded-full"></span> <span>継続アドバイス：現場の状況に合わせた運用支援</span></li>
+                    </ul>
+                    <div class="pt-6 border-t border-slate-100">
+                        <p class="text-slate-500 text-sm mb-1">月額運用費用</p>
+                        <p class="text-4xl font-bold text-slate-900">22,000<span class="text-xl ml-1 font-bold text-slate-500">円 (税込)</span></p>
+                        <p class="text-xs text-slate-400 mt-2">※毎月の改善サイクルを回します</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 比較セクション -->
+    <section class="section-padding bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">他社との圧倒的な違い</h2>
+            </div>
+            
+            <div class="overflow-hidden rounded-3xl border border-slate-200">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th class="py-6 px-6 font-bold border-b border-slate-200">比較項目</th>
+                            <th class="py-6 px-6 font-bold border-b border-slate-200 text-slate-400">一般的な他社サービス</th>
+                            <th class="py-6 px-6 font-bold border-b border-sky-200 bg-sky-50 text-sky-600">irohaコンサルティング</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="py-6 px-6 font-bold">業界知識</td>
+                            <td class="py-6 px-6 text-slate-500 text-sm">歯科特有の悩みを知らない</td>
+                            <td class="py-6 px-6 text-sm font-bold bg-sky-50/50">元EPARKメディア責任者が監修</td>
+                        </tr>
+                        <tr>
+                            <td class="py-6 px-6 font-bold">分析・改善</td>
+                            <td class="py-6 px-6 text-slate-500 text-sm">レポートを出すだけで終わり</td>
+                            <td class="py-6 px-6 text-sm font-bold bg-sky-50/50">数字を徹底分析し、次の一手を実行</td>
+                        </tr>
+                        <tr>
+                            <td class="py-6 px-6 font-bold">実施内容</td>
+                            <td class="py-6 px-6 text-slate-500 text-sm">アドバイスのみが多い</td>
+                            <td class="py-6 px-6 text-sm font-bold bg-sky-50/50">返信案の作成から投稿まで代行・実施</td>
+                        </tr>
+                        <tr>
+                            <td class="py-6 px-6 font-bold border-b-0">サポート</td>
+                            <td class="py-6 px-6 text-slate-500 text-sm border-b-0">一律の対応</td>
+                            <td class="py-6 px-6 text-sm font-bold bg-sky-50/50 border-b-0">医院の個性に合わせたトータル支援</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- トータルサポート -->
+    <section class="section-padding bg-slate-50">
+        <div class="max-w-6xl mx-auto text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">医院経営をトータルサポート</h2>
+        </div>
+        
+        <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center card">
+                <div class="text-sky-500 text-2xl mb-4"><i class="fa-solid fa-laptop-code"></i></div>
+                <h4 class="font-bold mb-2">HP制作</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">成約率の高いサイトを制作。</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center card">
+                <div class="text-sky-500 text-2xl mb-4"><i class="fa-brands fa-line"></i></div>
+                <h4 class="font-bold mb-2">LINE公式</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">リピート率向上施策を構築。</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center card">
+                <div class="text-sky-500 text-2xl mb-4"><i class="fa-solid fa-calendar-check"></i></div>
+                <h4 class="font-bold mb-2">予約システム</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">自動受付システム導入。</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center card">
+                <div class="text-sky-500 text-2xl mb-4"><i class="fa-solid fa-phone-volume"></i></div>
+                <h4 class="font-bold mb-2">電話自動受付</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">スタッフの負担を軽減。</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center card">
+                <div class="text-sky-500 text-2xl mb-4"><i class="fa-solid fa-handshake-angle"></i></div>
+                <h4 class="font-bold mb-2">経営相談</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">多角的な経営支援。</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center card">
+                <div class="text-sky-500 text-2xl mb-4"><i class="fa-solid fa-hospital-user"></i></div>
+                <h4 class="font-bold mb-2">ポータル掲載</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">最適なメディア選定。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section id="contact" class="section-padding bg-sky-600 text-white text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8 italic">Next Step</h2>
+            <h3 class="text-2xl md:text-3xl font-bold mb-6">まずはお気軽にご相談ください</h3>
+            <p class="text-lg text-sky-100 mb-10 leading-relaxed max-w-2xl mx-auto">
+                医院の現在の状況を診断し、最適なプランをご提案します。<br>
+                Googleマップ診断・お問い合わせはこちらから。
+            </p>
+            <div class="flex flex-col items-center gap-6">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSest5LEzvSpGkOEPvUIvd4_MH3thTMb-dSBBODmBh508VXRAg/viewform?usp=header" target="_blank" class="bg-white text-sky-600 px-12 py-5 rounded-full text-xl font-bold shadow-2xl hover:bg-slate-100 transition-all">
+                    無料診断・お問い合わせ
+                </a>
+                <p class="text-sm text-sky-200">24時間受付中 | 順次担当者よりご連絡いたします</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-slate-900 py-12 px-4 border-t border-slate-800 text-center">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-white font-bold text-xl mb-6 tracking-wider">irohaコンサルティング</div>
+            <div class="text-white/40 text-sm">
+                <p>&copy; 2024 irohaコンサルティング All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            const menuButton = document.getElementById('menu-button');
-            const navMenu = document.getElementById('nav-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-
-            // --- Menu Toggle Logic (New) ---
-            const toggleMenu = () => {
-                // ナビゲーションメニューの表示/非表示を切り替え
-                navMenu.classList.toggle('hidden');
-                navMenu.classList.toggle('absolute'); // モバイル時にドロップダウンさせるための absolute クラスをトグル
-                navMenu.classList.toggle('z-40');     // z-index を調整
-                navMenu.classList.toggle('w-full');   // 全幅表示をトグル
-                navMenu.classList.toggle('left-0');   // 左寄せをトグル
-
-                // アイコンの切り替え
-                menuIcon.classList.toggle('hidden');
-                closeIcon.classList.toggle('hidden');
-            };
-
-            // ハンバーガーボタンのリスナー
-            menuButton.addEventListener('click', toggleMenu);
-
-            // --- Navigation Logic (Existing, modified) ---
-            const navLinks = document.querySelectorAll('#nav-menu a.nav-link');
-            
-            const updateActiveLink = () => {
-                let currentSection = 'home';
-                document.querySelectorAll('section').forEach(section => {
-                    const offsetHeight = document.querySelector('header').offsetHeight; 
-                    const sectionTop = section.offsetTop;
-                    if (window.scrollY >= sectionTop - offsetHeight - 20) {
-                        currentSection = section.id;
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.toggle('active-link', link.dataset.target === currentSection);
-                });
-            };
-
-            navLinks.forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    // モバイルメニューが開いている場合、閉じる
-                    if (window.innerWidth < 640 && !navMenu.classList.contains('hidden')) {
-                        toggleMenu();
-                    }
-
-                    const targetId = this.dataset.target;
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        const headerHeight = document.querySelector('header').offsetHeight; 
-                        window.scrollTo({
-                            top: targetElement.offsetTop - headerHeight - 20,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            window.addEventListener('scroll', updateActiveLink);
-            updateActiveLink(); // Initial check
-
-            // --- Tab Logic (Section 2) ---
-            const tabButtons = {
-                info: document.getElementById('btn-info'),
-                review: document.getElementById('btn-review'),
-                booking: document.getElementById('btn-booking')
-            };
-            const tabContents = {
-                info: document.getElementById('content-info'),
-                review: document.getElementById('content-review'),
-                booking: document.getElementById('content-booking')
-            };
-
-            const allBtnEles = Object.values(tabButtons);
-            const allContentEles = Object.values(tabContents);
-
-            const activateTab = (tabName) => {
-                allBtnEles.forEach(btn => btn.classList.remove('active-tab'));
-                allContentEles.forEach(content => content.classList.add('hidden'));
-
-                if(tabButtons[tabName] && tabContents[tabName]) {
-                    tabButtons[tabName].classList.add('active-tab');
-                    tabContents[tabName].classList.remove('hidden');
-                }
-            };
-
-            tabButtons.info.addEventListener('click', () => activateTab('info'));
-            tabButtons.review.addEventListener('click', () => activateTab('review'));
-            tabButtons.booking.addEventListener('click', () => activateTab('booking'));
-
-            activateTab('info'); // Activate first tab by default
-
-            // --- Chart.js Logic (Section 3) ---
-
-            // Chart 1: Access Time (Bar)
-            const ctxAccess = document.getElementById('accessTimeChart').getContext('2d');
-            new Chart(ctxAccess, {
-                type: 'bar',
-                data: {
-                    labels: ['〜9時', '10-12時', '13-15時', '16-18時', '19-20時', '20時以降'],
-                    datasets: [{
-                        label: 'アクセス集中度 (相対値)',
-                        data: [15, 20, 25, 40, 75, 100],
-                        backgroundColor: (context) => {
-                            const chart = context.chart;
-                            const {ctx, chartArea} = chart;
-                            if (!chartArea) {
-                                return;
-                            }
-                            const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-                            gradient.addColorStop(0, 'rgba(13, 148, 136, 0.2)'); // teal-600 transparent
-                            gradient.addColorStop(1, 'rgba(13, 148, 136, 0.8)'); // teal-600
-                            return gradient;
-                        },
-                        borderColor: '#0d9488', // teal-600
-                        borderWidth: 2,
-                        borderRadius: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        title: {
-                            display: true,
-                            text: '医院検索のアクセス時間帯',
-                            font: { size: 16 }
-                        },
-                        tooltip: {
-                            backgroundColor: '#333',
-                            titleFont: { size: 14 },
-                            bodyFont: { size: 12 },
-                            padding: 10,
-                            cornerRadius: 4,
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    let value = context.parsed.y;
-                                    return `${label}: ${value}`;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'アクセス数 (相対)'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Chart 2: Same Day Booking (Doughnut)
-            const ctxSameDay = document.getElementById('sameDayBookingChart').getContext('2d');
-            new Chart(ctxSameDay, {
-                type: 'doughnut',
-                data: {
-                    labels: ['当日午前→午後の予約 (60%)', 'その他の予約 (40%)'],
-                    datasets: [{
-                        data: [60, 40],
-                        backgroundColor: ['#0d9488', '#99f6e4'], // teal-600, teal-200
-                        borderColor: '#ffffff',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '60%',
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 15,
-                                boxWidth: 15
-                            }
-                        },
-                        title: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
-                                    // Extract percentage from label for a clean tooltip
-                                    return label.split(' ')[0];
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Chart 3: Outside Hours Booking (Doughnut) - Mock Data
-            const ctxOutsideHours = document.getElementById('outsideHoursChart').getContext('2d');
-            new Chart(ctxOutsideHours, {
-                type: 'doughnut',
-                data: {
-                    labels: ['電話受付時間外の予約 (55%)', '受付時間内の予約 (45%)'],
-                    datasets: [{
-                        data: [55, 45], // Mock data based on "very many"
-                        backgroundColor: ['#0f766e', '#ccfbf1'], // teal-700, teal-100
-                        borderColor: '#ffffff',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '60%',
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 15,
-                                boxWidth: 15
-                            }
-                        },
-                        title: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
-                                    // Extract percentage from label for a clean tooltip
-                                    return label.split(' ')[0];
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-
-        });
-    </script>
 </body>
 </html>
