@@ -1,373 +1,393 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMMEV5D7JQ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-YMMEV5D7JQ');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
-    <title>歯科医院のMEO対策・集患ならirohaコンサルティング | 元EPARK責任者が監修</title>
-    <meta name="description" content="歯科医院向けのMEO対策（Googleマップ集客）サービス。1万件以上のデータを分析した元EPARK歯科メディア責任者が、新患獲得を最大化する戦略をご提案。地域名＋歯科での上位表示を実現し、安定した集患をサポートします。">
-    <meta name="keywords" content="歯科医院,MEO対策,集患,Googleマップ集客,歯科経営,irohaコンサルティング">
-    
-    <!-- JSON-LD Structured Data for SEO/AI Search -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "MEO対策・歯科医院集患コンサルティング",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "irohaコンサルティング",
-        "image": "image1.png"
-      },
-      "areaServed": "Japan",
-      "description": "元EPARK歯科メディア責任者による、1万件以上のデータに基づいた歯科医院特化型MEO対策サービス。",
-      "offers": {
-        "@type": "Offer",
-        "price": "22000",
-        "priceCurrency": "JPY"
-      }
-    }
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>SmartCloset AI for Women | 働くあなたの専属AIスタイリスト</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --rose-accent: #fb7185;
+            --line-green: #06C755;
+        }
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            color: #1e293b;
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
         }
-        .hero-gradient {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        .serif {
+            font-family: 'Noto Serif JP', serif;
         }
-        .section-padding {
-            padding: 80px 20px;
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
-        .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
-        @media (max-width: 768px) {
-            .section-padding {
-                padding: 60px 15px;
-            }
+        .bg-subtle {
+            background: linear-gradient(180deg, #fffaf9 0%, #ffffff 100%);
+        }
+        .cta-shadow {
+            box-shadow: 0 20px 40px -10px rgba(6, 199, 85, 0.3);
+        }
+        .phone-float {
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 1.5rem;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+        .floating-cta:hover {
+            transform: scale(1.05);
+        }
+        /* Modal Style */
+        #modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        #modal-content {
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
         }
     </style>
 </head>
-<body class="bg-slate-50">
+<body class="text-slate-800 bg-white leading-relaxed overflow-x-hidden">
 
-    <!-- ヘッダー -->
-    <header class="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="font-bold text-xl text-sky-600 tracking-wider">irohaコンサルティング</div>
-            <nav class="hidden md:flex gap-6 text-sm font-medium">
-                <a href="#about" class="hover:text-sky-600 transition-colors">強み</a>
-                <a href="#merit" class="hover:text-sky-600 transition-colors">メリット</a>
-                <a href="#price" class="hover:text-sky-600 transition-colors">料金</a>
-                <a href="#faq" class="hover:text-sky-600 transition-colors">よくある質問</a>
-            </nav>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSest5LEzvSpGkOEPvUIvd4_MH3thTMb-dSBBODmBh508VXRAg/viewform?usp=header" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded-full text-sm font-bold transition-colors">
-                無料診断・相談
-            </a>
+    <!-- Floating Mobile CTA -->
+    <div class="floating-cta md:hidden">
+        <a href="https://line.me/R/ti/p/@945lbkfo" class="flex items-center bg-[#06C755] text-white p-4 rounded-full shadow-2xl cta-shadow">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.047c-.052.303-.251 1.184 1.081.644 1.333-.541 7.191-4.235 9.81-7.252 1.911-2.199 2.148-4.145 2.148-5.729z"/></svg>
+            <span class="ml-2 font-bold text-sm tracking-tighter">LINEで登録</span>
+        </a>
+    </div>
+
+    <!-- Header (Simple Logo Only) -->
+    <nav class="fixed w-full z-50 glass border-b border-rose-100/20">
+        <div class="container mx-auto px-6 py-4 flex justify-center items-center">
+            <div class="flex items-center">
+                <!-- ロゴを中央に配置し、ナビゲーションを削除しました -->
+                <img src="https://github.com/yakimoto-design/image/blob/main/smartcloset/%E3%80%90%E6%96%87%E5%AD%97%E3%81%AE%E3%81%BF%E5%B0%8F%E3%80%91%E3%83%AD%E3%82%B4.png?raw=true" alt="SmartCloset AI Logo" class="h-8 md:h-12 object-contain">
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <!-- ヒーローセクション -->
-        <section class="hero-gradient pt-32 pb-20 px-4 text-center">
-            <div class="max-w-4xl mx-auto">
-                <p class="text-sky-600 font-bold tracking-[0.2em] mb-4 uppercase">Dental Clinic MEO Solutions</p>
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-8">
-                    歯科医院の集患に特化した<br>
-                    Googleマップ上位表示戦略
+    <!-- Hero Section -->
+    <section class="bg-subtle pt-32 pb-20 md:pt-48 md:pb-32 px-6 relative overflow-hidden">
+        <div class="absolute top-20 right-[-10%] w-[400px] h-[400px] bg-rose-100/40 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-10 left-[-5%] w-[300px] h-[300px] bg-indigo-50/50 rounded-full blur-[80px] pointer-events-none"></div>
+
+        <div class="container mx-auto flex flex-col lg:flex-row items-center relative z-10">
+            <div class="lg:w-1/2 text-left mb-16 lg:mb-0 reveal">
+                <p class="text-rose-400 text-[10px] font-bold tracking-[0.4em] uppercase mb-6 md:mb-8 border-l-2 border-rose-200 pl-4">AI Stylist on LINE</p>
+                <h1 class="serif text-4xl md:text-5xl lg:text-6xl mb-8 md:mb-10 leading-[1.3] text-slate-900">
+                    忙しい朝の<br>「何を着よう？」を<br>
+                    <span class="italic text-rose-400">LINE</span>で解決。
                 </h1>
-                <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed">
-                    「地域名 ＋ 歯科」の検索で貴院を選ばれる存在へ。<br class="hidden md:block">
-                    1万件のデータと専門知見で、最短ルートの集患を実現します。
+                <p class="text-slate-500 text-sm md:text-lg mb-10 md:mb-14 max-w-lg font-light leading-loose">
+                    もう、クローゼットの前で迷う必要はありません。<br class="hidden md:block">
+                    あなたの手持ちの服の写真を送るだけで、AIが最適な組み合わせを提案します。
                 </p>
-                <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSest5LEzvSpGkOEPvUIvd4_MH3thTMb-dSBBODmBh508VXRAg/viewform?usp=header" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white px-10 py-4 rounded-xl text-lg font-bold shadow-lg shadow-sky-200 transition-all">
-                        今すぐ無料でMEO診断を申し込む
+                <div class="flex flex-col sm:flex-row items-start space-y-6 sm:space-y-0 sm:space-x-8">
+                    <a href="https://line.me/R/ti/p/@945lbkfo" class="inline-flex items-center justify-center bg-[#06C755] text-white px-10 py-4 md:px-12 md:py-5 rounded-full font-bold cta-shadow hover:scale-105 active:scale-95 transition-all group text-sm md:text-base">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.047c-.052.303-.251 1.184 1.081.644 1.333-.541 7.191-4.235 9.81-7.252 1.911-2.199 2.148-4.145 2.148-5.729z"/></svg>
+                        LINEで友だち登録する
                     </a>
                 </div>
             </div>
-        </section>
 
-        <!-- 代表紹介セクション (E-E-A-T) -->
-        <section id="about" class="section-padding bg-white">
-            <div class="max-w-5xl mx-auto">
-                <div class="flex flex-col md:flex-row items-center gap-10 bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-100">
-                    <div class="w-48 h-48 md:w-64 md:h-64 flex-shrink-0 bg-white rounded-2xl overflow-hidden shadow-lg border-4 border-white">
-                        <img src="image1.png" alt="irohaコンサルティング代表 秋元祐介 - 歯科集患のスペシャリスト" class="w-full h-full object-cover">
-                    </div>
-                    <div>
-                        <p class="text-sky-600 font-bold mb-2">irohaコンサルティング 代表</p>
-                        <h2 class="text-3xl font-bold mb-4">秋元 祐介</h2>
-                        <p class="text-slate-700 font-bold mb-4 leading-relaxed italic border-b border-sky-200 pb-2 inline-block">
-                            元EPARK歯科 メディア責任者
-                        </p>
-                        <p class="text-slate-600 text-sm md:text-base leading-relaxed mt-4">
-                            これまで1万件以上の歯科医院データを分析し、長年にわたり全国の歯科医院様の集患に貢献してきました。患者様がどのように歯科医院を探し、どこを決め手にするのか。その心理と行動動線を熟知した専門家が、貴院のMEO対策を直接監修します。データに基づいた、他社には真似できない本質的な改善を提案します。
-                        </p>
+            <div class="lg:w-1/2 flex justify-center reveal" style="transition-delay: 0.3s;">
+                <div class="relative w-64 md:w-72 h-[520px] md:h-[580px] bg-slate-900 rounded-[3rem] p-3 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.3)] border-[6px] md:border-[8px] border-slate-800 phone-float">
+                    <div class="w-full h-full bg-white rounded-[2.2rem] overflow-hidden flex flex-col relative">
+                        <div class="h-6 w-full bg-white flex justify-center items-end shrink-0">
+                            <div class="w-16 h-4 bg-slate-900 rounded-b-xl"></div>
+                        </div>
+                        <div class="bg-rose-50/50 p-4 border-b border-rose-100/30 flex items-center justify-between shrink-0">
+                            <p class="text-[9px] font-bold text-rose-400 uppercase tracking-widest">AI Stylist</p>
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                        </div>
+                        <div class="flex-grow p-4 space-y-4 bg-white overflow-hidden text-left">
+                            <div class="flex items-start space-x-2">
+                                <div class="w-6 h-6 rounded-full bg-rose-100 flex items-center justify-center text-[10px] shrink-0">👠</div>
+                                <div class="bg-slate-50 p-3 rounded-2xl rounded-tl-none text-[8px] md:text-[9px] text-slate-600 leading-relaxed shadow-sm">
+                                    お持ちのアイテムでのコーディネートですね✨<br>
+                                    このスカートと、こちらのブラウスの組み合わせはいかがですか？
+                                </div>
+                            </div>
+                            <div class="bg-white border border-slate-50 rounded-2xl p-2 shadow-md">
+                                <img src="https://github.com/yakimoto-design/image/blob/main/smartcloset/outfit_1769612755140.png?raw=true" class="rounded-xl mb-2 object-cover aspect-square" alt="AI Recommended Outfit">
+                                <div class="px-1 pb-1">
+                                    <p class="text-[8px] font-bold text-slate-800 tracking-wider">Today's Suggestion</p>
+                                    <p class="text-[7px] text-slate-400 italic">Mix & Match Idea</p>
+                                </div>
+                            </div>
+                            <div class="bg-rose-400 text-white px-4 py-2 rounded-2xl rounded-br-none text-[8px] md:text-[9px] self-end ml-8 shadow-sm text-right">
+                                ありがとうございます！これにします✨
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- MEOの重要性 -->
-        <section id="merit" class="section-padding bg-slate-50">
-            <div class="max-w-6xl mx-auto text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">歯科医院がMEO対策をすべき理由</h2>
-                <p class="text-slate-500">Google検索のトップを占める「マップ」エリアの圧倒的視認性</p>
+    <!-- How to Start Section -->
+    <section class="py-24 bg-white reveal">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="serif text-3xl md:text-4xl mb-16 text-slate-900">始め方は、とても簡単</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center text-2xl mb-6 text-rose-400 font-bold">1</div>
+                    <p class="font-bold mb-4 text-sm md:text-base">LINE友だち追加</p>
+                    <p class="text-xs md:text-sm text-slate-400 font-light">下のボタンから公式アカウントを登録してください。</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center text-2xl mb-6 text-rose-400 font-bold">2</div>
+                    <p class="font-bold mb-4 text-sm md:text-base">服の写真を送信</p>
+                    <p class="text-xs md:text-sm text-slate-400 font-light">手持ちの服を撮影して、トーク画面に送るだけ。</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center text-2xl mb-6 text-rose-400 font-bold">3</div>
+                    <p class="font-bold mb-4 text-sm md:text-base">提案が届く</p>
+                    <p class="text-xs md:text-sm text-slate-400 font-light">AIがあなたの手持ち服の中から、最適な組み合わせを提案します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section id="concept" class="py-24 md:py-40 bg-slate-50/50">
+        <div class="container mx-auto px-6 text-center max-w-4xl reveal">
+            <h2 class="serif text-3xl md:text-5xl mb-12 md:mb-16 text-slate-900 tracking-[0.1em] leading-relaxed">
+                あなたの<br>クローゼットに、<br class="md:hidden">
+                新しい可能性を。
+            </h2>
+            <p class="text-slate-400 font-light leading-[2.4] text-sm md:text-base tracking-[0.05em] px-4">
+                「いつも同じ組み合わせになってしまう」「せっかく買った服が眠っている」<br class="hidden md:block">
+                そんな悩みを、AIが解決します。<br class="hidden md:block">
+                SmartCloset AIは、あなたのクローゼットにある服だけを使って、<br class="hidden md:block">
+                今のあなたに似合う新しいスタイルを見つけ出します。
+            </p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-24 md:py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl text-center">
+            <!-- Feature 1 -->
+            <div class="grid lg:grid-cols-2 gap-16 md:gap-24 items-center mb-24 md:mb-40 reveal">
+                <div class="relative group">
+                    <div class="absolute -top-12 -left-12 w-48 h-48 bg-rose-200/20 rounded-full blur-3xl group-hover:bg-rose-300/30 transition-all duration-700"></div>
+                    <img src="https://github.com/yakimoto-design/image/blob/main/smartcloset/outfit_1770020253811.png?raw=true" class="rounded-[2rem] md:rounded-[3rem] shadow-2xl relative z-10 brightness-[1.02]" alt="Archive Example">
+                </div>
+                <div class="lg:pl-12 text-left">
+                    <span class="text-rose-400 text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block">01 / Digital Archive</span>
+                    <h3 class="serif text-3xl md:text-4xl mb-8 leading-snug text-slate-900">写真を送るだけで、<br>デジタルクローゼットへ。</h3>
+                    <p class="text-slate-500 font-light leading-loose text-sm md:text-base mb-8">
+                        お気に入りの服をLINEで送るだけ。AIが色やシルエットを解析し、あなたのリストに追加します。登録された服の中から、AIがコーディネートを提案。手持ちの服の活用幅が広がります。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="grid lg:grid-cols-2 gap-16 md:gap-24 items-center reveal">
+                <div class="lg:pr-12 order-2 lg:order-1 text-left">
+                    <span class="text-rose-400 text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block">02 / Personal Suggestion</span>
+                    <h3 class="serif text-3xl md:text-4xl mb-8 leading-snug text-slate-900">あなたのスタイルに、<br>寄り添う提案。</h3>
+                    <p class="text-slate-500 font-light leading-loose text-sm md:text-base mb-8">
+                        身長、体重、好みのシルエットなどのプロファイルを登録。<br>
+                        AIが、あなたに近いスタイルをイメージした画像でコーディネートを提案します。鏡を見る前に、着こなしの雰囲気を具体的に確認できます。
+                    </p>
+                </div>
+                <div class="relative group order-1 lg:order-2">
+                    <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-indigo-100/30 rounded-full blur-3xl group-hover:bg-indigo-200/40 transition-all duration-700"></div>
+                    <img src="https://github.com/yakimoto-design/image/blob/main/smartcloset/outfit_1770106790365.png?raw=true" class="rounded-[2rem] md:rounded-[3rem] shadow-2xl relative z-10" alt="Personal Style Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-24 md:py-40 bg-slate-50/50">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <div class="mb-16 md:mb-24 reveal">
+                <p class="text-rose-400 text-[10px] font-bold tracking-[0.5em] uppercase mb-4">Pricing Plan</p>
+                <h2 class="serif text-4xl text-slate-900">プラン紹介</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-stretch max-w-4xl mx-auto">
+                <div class="p-8 md:p-12 rounded-[2.5rem] bg-white border border-slate-100 flex flex-col hover:shadow-2xl transition-all duration-500 reveal text-left">
+                    <h4 class="text-[10px] font-bold tracking-[0.3em] uppercase mb-10 text-slate-400">Basic Plan</h4>
+                    <div class="serif text-4xl mb-4 text-slate-900">無料</div>
+                    <p class="text-[11px] text-slate-400 mb-10 font-medium italic tracking-widest">Start for Free</p>
+                    <ul class="space-y-6 mb-12 text-sm text-slate-500 font-light flex-grow">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-rose-200 rounded-full mr-4 shrink-0"></span> 持ち服登録 10着まで</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-rose-200 rounded-full mr-4 shrink-0"></span> AIコーディネート提案</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-rose-200 rounded-full mr-4 shrink-0"></span> LINE公式サポート</li>
+                    </ul>
+                    <a href="https://line.me/R/ti/p/@945lbkfo" class="w-full py-4 rounded-full border border-slate-200 text-slate-900 font-bold text-[10px] tracking-[0.2em] hover:bg-slate-900 hover:text-white transition-all text-center uppercase">
+                        Get Started
+                    </a>
+                </div>
+                <div class="p-8 md:p-12 rounded-[2.5rem] bg-slate-900 text-white shadow-2xl relative md:scale-105 flex flex-col border border-slate-800 reveal text-left" style="transition-delay: 0.2s;">
+                    <div class="absolute top-0 right-12 -translate-y-1/2 bg-rose-400 text-[9px] font-bold tracking-[0.3em] px-5 py-1.5 rounded-full uppercase shadow-lg">Capacity Up</div>
+                    <h4 class="text-[10px] font-bold tracking-[0.3em] uppercase mb-10 text-rose-300/60">Standard Plan</h4>
+                    <div class="serif text-5xl mb-4 italic">¥550 <span class="text-[10px] font-sans font-light text-slate-400 tracking-normal not-italic">/ month</span></div>
+                    <p class="text-[10px] text-rose-300 mb-10 font-bold tracking-[0.2em] uppercase">Max 50 items</p>
+                    <ul class="space-y-6 mb-12 text-sm text-slate-300 font-light flex-grow">
+                        <li class="flex items-center font-medium text-white"><span class="w-1.5 h-1.5 bg-rose-400 rounded-full mr-4 shrink-0"></span> 持ち服登録 50着まで</li>
+                        <li class="flex items-center text-white"><span class="w-1.5 h-1.5 bg-rose-400 rounded-full mr-4 shrink-0"></span> 自分モデル（準備中）</li>
+                        <li class="flex items-center text-slate-400 line-through decoration-slate-500"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full mr-4 shrink-0"></span> 天気連動（準備中）</li>
+                    </ul>
+                    <div class="w-full py-4 rounded-full bg-slate-800 text-slate-500 font-bold text-[10px] tracking-[0.2em] text-center uppercase cursor-default border border-slate-700">
+                        Coming Soon
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="py-32 md:py-48 bg-subtle text-center relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10 reveal">
+            <h2 class="serif text-3xl md:text-5xl mb-12 md:mb-14 leading-tight text-slate-900 tracking-wide">
+                朝の5分を、<br>もっと自分らしく。
+            </h2>
+            <div class="bg-white p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] shadow-xl border border-rose-50 max-w-2xl mx-auto flex flex-col md:flex-row items-center justify-around">
+                <div class="text-left mb-8 md:mb-0 text-center md:text-left">
+                    <p class="text-[10px] font-bold text-rose-400 uppercase tracking-widest mb-2">Join us on LINE</p>
+                    <h3 class="serif text-xl md:text-2xl text-slate-900 mb-6">公式アカウントはこちら</h3>
+                    <a href="https://line.me/R/ti/p/@945lbkfo" class="inline-flex items-center justify-center bg-[#06C755] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:scale-105 transition-all text-sm">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.047c-.052.303-.251 1.184 1.081.644 1.333-.541 7.191-4.235 9.81-7.252 1.911-2.199 2.148-4.145 2.148-5.729z"/></svg>
+                        友だち登録する
+                    </a>
+                </div>
+                <div class="hidden md:flex flex-col items-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-rose-100 to-indigo-100 rounded-2xl blur opacity-25"></div>
+                        <img src="https://qr-official.line.me/gs/M_945lbkfo_GW.png" alt="LINE QR Code" class="relative w-32 h-32 border-2 border-slate-50 shadow-sm rounded-xl p-1 bg-white">
+                    </div>
+                    <p class="text-[9px] text-slate-400 mt-3 font-bold tracking-[0.2em] uppercase">Scan with Camera</p>
+                </div>
             </div>
             
-            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1">
-                    <h3 class="text-2xl font-bold mb-6 leading-snug">
-                        通常のSEOよりも上位に表示。<br>新患の目に最初に入ります。
-                    </h3>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        「小山市 歯科」「近くの歯医者」などの検索キーワードで、Googleはウェブサイトの検索結果よりも上に「Googleマップ（ローカルパック）」を表示します。
-                    </p>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        スマホユーザーにとって最も操作しやすく、視認性が高いエリア。ここに上位表示されることは、地域一番の認知度を獲得することと同じ価値があります。
-                    </p>
+            <div class="mt-32 md:mt-40 pt-16 border-t border-rose-100/50 flex flex-col md:flex-row justify-between items-center text-[9px] text-slate-400 tracking-[0.4em] uppercase font-bold">
+                <div class="mb-8 md:mb-0 flex flex-col items-center md:items-start text-left">
+                    <img src="https://github.com/yakimoto-design/image/blob/main/smartcloset/%E3%80%90%E6%96%87%E5%AD%97%E3%81%AE%E3%81%BF%E5%B0%8F%E3%80%91%E3%83%AD%E3%82%B4.png?raw=true" alt="Logo" class="h-6 opacity-50 grayscale mb-4">
+                    <p>© 2026 irohaコンサルティング / SMARTCLOSET AI PROJECT</p>
                 </div>
-                <div class="order-1 md:order-2 bg-white p-4 rounded-3xl shadow-xl overflow-hidden">
-                    <img src="image2.png" alt="Googleマップでの歯科医院検索結果表示イメージ" class="w-full h-auto rounded-xl">
+                <div class="flex space-x-8 md:space-x-12 mt-4 md:mt-0">
+                    <button onclick="openModal('privacy')" class="hover:text-rose-400 transition-colors uppercase">Privacy Policy</button>
+                    <button onclick="openModal('terms')" class="hover:text-rose-400 transition-colors uppercase">Terms of Use</button>
+                    <button onclick="openModal('contact')" class="hover:text-rose-400 transition-colors uppercase">Contact</button>
                 </div>
-            </div>
-        </section>
-
-        <!-- 利用率データ -->
-        <section class="section-padding bg-white">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-slate-900">歯科医院選びの88%がマップを活用</h2>
-                <div class="flex flex-col items-center mb-10">
-                    <span class="text-sky-500 font-bold text-8xl md:text-9xl leading-none">88<span class="text-4xl md:text-5xl ml-1">%</span></span>
-                    <p class="text-xl font-bold mt-4 text-slate-700">「地域名 ＋ 歯科」での検索ユーザー</p>
-                </div>
-                <p class="text-slate-600 leading-relaxed max-w-2xl mx-auto">
-                    多くの患者様が地域名を含めた検索を行い、Googleマップ上の「口コミ」「写真」「評価」を比較しています。単にHPがあるだけでは不十分です。マップ情報を最適化することが、今の歯科集患の成否を分けます。
-                </p>
-            </div>
-        </section>
-
-        <!-- 患者が注目する5要素 -->
-        <section class="section-padding bg-slate-50">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">選ばれる歯科医院が整えている「5つの情報」</h2>
-                    <p class="text-slate-500">irohaコンサルティングはこれらを徹底的に最適化します。</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-2xl shadow-sm card border border-slate-100 text-center">
-                        <div class="text-sky-500 text-3xl mb-6"><i class="fa-solid fa-star-half-stroke"></i></div>
-                        <h4 class="text-xl font-bold mb-4">口コミの量と質</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">最新の評価と返信の丁寧さは、患者様が最も信頼を置くポイントです。</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-sm card border border-slate-100 text-center">
-                        <div class="text-sky-500 text-3xl mb-6"><i class="fa-solid fa-camera-retro"></i></div>
-                        <h4 class="text-xl font-bold mb-4">院内の視覚的訴求</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">雰囲気や清潔感、最新設備を正しく伝え、初診の不安を取り除きます。</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-sm card border border-slate-100 text-center">
-                        <div class="text-sky-500 text-3xl mb-6"><i class="fa-solid fa-clock"></i></div>
-                        <h4 class="text-xl font-bold mb-4">最新の診療時間</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">正確な情報は基本。ミスマッチを防ぎ、信頼感を醸成します。</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-sm card border border-slate-100 text-center">
-                        <div class="text-sky-500 text-3xl mb-6"><i class="fa-solid fa-globe"></i></div>
-                        <h4 class="text-xl font-bold mb-4">HPとの親和性</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">マップから詳細なHPへ。スムーズな遷移で離脱を防ぎます。</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-sm card border border-slate-100 text-center">
-                        <div class="text-sky-500 text-3xl mb-6"><i class="fa-solid fa-calendar-check"></i></div>
-                        <h4 class="text-xl font-bold mb-4">WEB予約導線</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">「今予約したい」という意欲を逃さずコンバージョンに繋げます。</p>
-                    </div>
-                    <div class="bg-sky-500 p-8 rounded-2xl shadow-lg text-white flex flex-col justify-center items-center text-center">
-                        <h4 class="text-2xl font-bold mb-4 italic">Total Optimization</h4>
-                        <p class="text-sky-100 text-sm leading-relaxed">全項目を業界トップレベルの水準へ。1万件のデータがその精度を支えます。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- リスク説明 -->
-        <section class="section-padding bg-white">
-            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-                <div class="bg-slate-100 p-4 rounded-3xl overflow-hidden">
-                    <img src="image3.png" alt="MEO対策を放置するリスク" class="w-full h-auto rounded-xl">
-                </div>
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">MEO対策を放置するリスク</h2>
-                    <h3 class="text-xl font-bold mb-4 text-red-500 italic">第三者による勝手な情報編集</h3>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        Googleマップの情報は誰でも提案できるため、管理していないと誤った診療時間や古い外観写真が掲載されるリスクがあります。
-                    </p>
-                    <p class="text-slate-600 mb-6 leading-relaxed font-bold">
-                        「情報が正しくない医院」という不信感を患者様に与える前に、プロによる適切な運用管理をスタートさせましょう。
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 料金プラン -->
-        <section id="price" class="section-padding bg-slate-50">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">サービス内容と明確な料金プラン</h2>
-                    <p class="text-slate-500">歯科医院様の経営を圧迫しない、継続可能な価格設定です。</p>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- 初期パッケージ -->
-                    <div class="bg-white border border-slate-200 p-10 rounded-3xl shadow-sm">
-                        <h3 class="text-2xl font-bold mb-6 text-sky-600 underline decoration-sky-200 decoration-4">初期パッケージ内容</h3>
-                        <ul class="space-y-4 mb-10 text-slate-700">
-                            <li class="flex items-center gap-3 font-medium text-lg"><i class="fa-solid fa-check text-sky-500"></i> プロフィール徹底最適化</li>
-                            <li class="flex items-center gap-3 font-medium text-lg"><i class="fa-solid fa-check text-sky-500"></i> 強みを伝える紹介文作成</li>
-                            <li class="flex items-center gap-3 font-medium text-lg"><i class="fa-solid fa-check text-sky-500"></i> 戦略的な画像登録</li>
-                            <li class="flex items-center gap-3 font-medium text-lg"><i class="fa-solid fa-check text-sky-500"></i> 予約導線・WEB動線設置</li>
-                        </ul>
-                        <div class="pt-6 border-t border-slate-100">
-                            <p class="text-slate-500 text-sm mb-1">初期費用</p>
-                            <p class="text-4xl font-bold text-slate-900">3,300<span class="text-xl ml-1 font-bold text-slate-500">円 (税込)</span></p>
-                            <p class="text-xs text-sky-600 mt-2 font-bold">※導入をスムーズに進めるための特別価格</p>
-                        </div>
-                    </div>
-
-                    <!-- 月額運用プラン -->
-                    <div class="bg-white border-2 border-sky-500 p-10 rounded-3xl shadow-lg shadow-sky-100 relative">
-                        <div class="absolute -top-4 right-8 bg-sky-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-tighter">Recommended</div>
-                        <h3 class="text-2xl font-bold mb-6 text-sky-600 underline decoration-sky-200 decoration-4">月額運用サポート</h3>
-                        <ul class="space-y-4 mb-10 text-slate-700">
-                            <li class="flex items-center gap-3 font-medium text-lg"><i class="fa-solid fa-check text-sky-500"></i> お知らせ投稿の配信代行</li>
-                            <li class="flex items-center gap-3 font-medium text-lg"><i class="fa-solid fa-check text-sky-500"></i> 口コミ返信サポート</li>
-                            <li class="flex items-center gap-3 font-medium text-lg"><i class="fa-solid fa-check text-sky-500"></i> 数値分析・月次レポート</li>
-                            <li class="flex items-center gap-3 font-medium text-lg"><i class="fa-solid fa-check text-sky-500"></i> 継続的な改善アドバイス</li>
-                        </ul>
-                        <div class="pt-6 border-t border-slate-100">
-                            <p class="text-slate-500 text-sm mb-1">月額費用</p>
-                            <p class="text-4xl font-bold text-slate-900">22,000<span class="text-xl ml-1 font-bold text-slate-500">円 (税込)</span></p>
-                            <p class="text-xs text-slate-400 mt-2 italic text-right">改善サイクルを毎月回します</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 他社比較 -->
-        <section class="section-padding bg-white">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">なぜ、irohaコンサルティングなのか？</h2>
-                    <p class="text-slate-500">歯科業界に特化した圧倒的な実績と、実行力の違い。</p>
-                </div>
-                
-                <div class="overflow-hidden rounded-3xl border border-slate-200 shadow-xl">
-                    <table class="w-full text-left">
-                        <thead class="bg-slate-900 text-white">
-                            <tr>
-                                <th class="py-6 px-6 font-bold text-sm md:text-base">比較項目</th>
-                                <th class="py-6 px-6 font-bold text-sm md:text-base text-slate-400 text-center">一般的な他社サービス</th>
-                                <th class="py-6 px-6 font-bold text-sm md:text-base text-sky-400 text-center">irohaコンサルティング</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100">
-                            <tr>
-                                <td class="py-6 px-6 font-bold bg-slate-50">業界特化の知識</td>
-                                <td class="py-6 px-6 text-slate-500 text-sm text-center">歯科特有の悩みを知らない</td>
-                                <td class="py-6 px-6 text-sm font-bold bg-sky-50/50 text-sky-700 text-center italic">元EPARKメディア責任者が監修</td>
-                            </tr>
-                            <tr>
-                                <td class="py-6 px-6 font-bold bg-slate-50">データ分析</td>
-                                <td class="py-6 px-6 text-slate-500 text-sm text-center">レポートを出すだけで終わり</td>
-                                <td class="py-6 px-6 text-sm font-bold bg-sky-50/50 text-sky-700 text-center italic">1万件のデータで次の一手を提示</td>
-                            </tr>
-                            <tr>
-                                <td class="py-6 px-6 font-bold bg-slate-50">実行サポート</td>
-                                <td class="py-6 px-6 text-slate-500 text-sm text-center">アドバイスのみが多い</td>
-                                <td class="py-6 px-6 text-sm font-bold bg-sky-50/50 text-sky-700 text-center italic">返信案作成から投稿まで代行</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- よくある質問 (AI Search Optimization) -->
-        <section id="faq" class="section-padding bg-slate-50">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">歯科医院MEO対策のよくある質問</h2>
-                </div>
-                <div class="space-y-6 text-left">
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200">
-                        <h4 class="font-bold text-lg text-sky-700 mb-2">Q. MEO対策はどれくらいで効果が出ますか？</h4>
-                        <p class="text-slate-600">歯科医院の地域競合にもよりますが、最短2週間〜1ヶ月程度で閲覧数やアクション数の変化が見え始めます。3ヶ月程度で順位が安定してくるのが一般的です。</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200">
-                        <h4 class="font-bold text-lg text-sky-700 mb-2">Q. 悪い口コミがついた場合、削除できますか？</h4>
-                        <p class="text-slate-600">Googleの規約違反でない限り削除は難しいですが、irohaコンサルティングでは誠実な返信案を作成し、閲覧ユーザーに「真摯に対応する良い医院」という印象を与えるリカバリー支援を重視しています。</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200">
-                        <h4 class="font-bold text-lg text-sky-700 mb-2">Q. 既に他社に依頼していますが、診断だけしてもらえますか？</h4>
-                        <p class="text-slate-600">もちろんです。現在の設定状況や他社様の施策が貴院の集患に本当に繋がっているか、データに基づいたセカンドオピニオン診断を無料で承っております。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTAセクション -->
-        <section id="contact" class="section-padding bg-sky-600 text-white text-center">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl md:text-5xl font-bold mb-8 italic uppercase tracking-widest">Next Step</h2>
-                <h3 class="text-2xl md:text-3xl font-bold mb-6">地域一番の「選ばれる歯科医院」へ。</h3>
-                <p class="text-lg text-sky-100 mb-10 leading-relaxed max-w-2xl mx-auto">
-                    現在のGoogleマップ順位診断から、具体的な改善案まで無料でご提示します。<br>
-                    フォームより「無料診断希望」とお知らせください。
-                </p>
-                <div class="flex flex-col items-center gap-6">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSest5LEzvSpGkOEPvUIvd4_MH3thTMb-dSBBODmBh508VXRAg/viewform?usp=header" target="_blank" class="bg-white text-sky-600 px-12 py-5 rounded-full text-xl font-bold shadow-2xl hover:scale-105 transition-transform">
-                        無料集患診断に申し込む
-                    </a>
-                    <p class="text-sm text-sky-200">24時間受付中 | 歯科専門コンサルタントが対応します</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- フッター -->
-    <footer class="bg-slate-900 py-12 px-4 border-t border-slate-800 text-center text-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="font-bold text-xl mb-6 tracking-wider">irohaコンサルティング</div>
-            <p class="text-slate-400 text-sm mb-6 max-w-lg mx-auto leading-relaxed">
-                歯科医院特化型のマーケティング支援。MEO対策、HP制作、LINE活用、ポータルサイト運用まで、集患の全行程をトータルサポート。
-            </p>
-            <div class="text-white/20 text-xs">
-                <p>&copy; 2024 irohaコンサルティング All Rights Reserved.</p>
             </div>
         </div>
-    </footer>
+    </section>
 
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" onclick="closeModal()">
+        <div id="modal-content" onclick="event.stopPropagation()">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 text-xl font-bold">×</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        const modalData = {
+            privacy: {
+                content: `
+                    <h3 class="serif text-xl mb-6">プライバシーポリシー</h3>
+                    <p class="text-sm text-slate-600 mb-4 leading-relaxed text-left">
+                        SmartCloset AI（運営：irohaコンサルティング、以下「当サービス」）は、個人情報の保護を最優先事項と考え、以下の通り規定します。
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-4 text-left list-disc pl-5">
+                        <li><strong>情報の収集:</strong> LINE公式アカウントを通じて、お客様が送信した画像および登録されたプロフィール設定情報を収集します。</li>
+                        <li><strong>利用目的:</strong> コーディネート提案の精度向上、サービスの利便性向上、および運営管理のためにのみ利用します。</li>
+                        <li><strong>管理主体:</strong> irohaコンサルティングが適切な管理体制を構築し、外部への漏洩防止に努めます。</li>
+                    </ul>
+                `
+            },
+            terms: {
+                content: `
+                    <h3 class="serif text-xl mb-6">利用規約</h3>
+                    <p class="text-sm text-slate-600 mb-4 leading-relaxed text-left">
+                        本規約は、irohaコンサルティングが提供する当サービスの利用条件を定めるものです。
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-4 text-left list-disc pl-5">
+                        <li><strong>サービスの性格:</strong> 当サービスはAIを用いた参考提案を行うものであり、結果の妥当性や満足度を完全に保証するものではありません。</li>
+                        <li><strong>知的財産:</strong> 提案内容やシステムに関する権利は、irohaコンサルティングまたはライセンス提供者に帰属します。</li>
+                        <li><strong>免責事項:</strong> 本サービスの利用により生じた直接的、間接的損害について、運営元は一切の責任を負いません。</li>
+                    </ul>
+                `
+            },
+            contact: {
+                content: `
+                    <h3 class="serif text-xl mb-6">お問い合わせ</h3>
+                    <p class="text-sm text-slate-600 mb-4 leading-relaxed text-left">
+                        サービスに関するご意見、ご要望、ビジネスに関するお問い合わせは、LINE公式アカウントのトーク画面、または下記のメールアドレスまでご連絡ください。
+                    </p>
+                    <div class="text-sm text-slate-800 font-bold text-left mb-2">メールでのお問い合わせ：</div>
+                    <a href="mailto:info@irohacs.com" class="text-rose-400 hover:underline block text-left mb-6 text-sm">info@irohacs.com</a>
+                    <div class="text-xs text-slate-400 text-left mb-6">運営：irohaコンサルティング</div>
+                    <a href="https://line.me/R/ti/p/@945lbkfo" class="inline-flex bg-[#06C755] text-white px-8 py-3 rounded-full text-sm font-bold shadow-lg">
+                        LINEで送る
+                    </a>
+                `
+            }
+        };
+
+        function openModal(type) {
+            const body = document.getElementById('modal-body');
+            body.innerHTML = modalData[type].content;
+            document.getElementById('modal-overlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
